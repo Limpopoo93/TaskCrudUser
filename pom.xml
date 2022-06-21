@@ -26,7 +26,7 @@
         <aspectj.version>1.6.11</aspectj.version>
         <dbcp-version>1.4</dbcp-version>
         <log4j>1.2.17</log4j>
-        <mysql.version>8.0.13</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <spring.version>5.1.5.RELEASE</spring.version>
     </properties>
 
