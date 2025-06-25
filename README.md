@@ -70,16 +70,16 @@ PersistenceContext — это контейнер (или "кэш первого 
 ## Коллекции_скорость
        Скорость работы коллекций <br>
 List реализации <br>
-Коллекция	           Получение (get)	Добавление (add)	  Удаление (remove)	    Поиск (contains) <br>
-ArrayList	             O(1)	           O(1)* / O(n)	        O(n)	                 O(n) <br>
-LinkedList	             O(n)	           O(1)	                O(1)	                 O(n) <br>
-CopyOnWriteArrayList	    O(1)	           O(n)	                O(n)	                 O(n) <br>
+Коллекция=============Получение (get)==Добавление (add=====Удаление (remove)=====Поиск (contains) <br>
+ArrayList================O(1)============O(1)* / O(n)===========O(n)==================O(n) <br>
+LinkedList===============O(n)============O(1)===================O(1)==================O(n) <br>
+CopyOnWriteArrayList=====O(1)============O(n)===================O(n)==================O(n) <br>
 Set реализации <br>
-Коллекция	                            Добавление (add)	  Удаление (remove)	    Поиск (contains) <br>
-HashSet	                                O(1)	              O(1)	                 O(1) <br>
-LinkedHashSet	                          O(1)	              O(1)	                 O(1) <br>
-TreeSet	                                O(log n)	          O(log n)	             O(log n) <br>
-CopyOnWriteArraySet	                    O(n)	              O(n)	                 O(n) <br>
+Коллекция===================Добавление (add)===Удаление (remove)======Поиск (contains) <br>
+HashSet=========================O(1)================O(1)==================O(1) <br>
+LinkedHashSet===================O(1)================O(1)==================O(1) <br>
+TreeSet=========================O(log n)============O(log n)==============O(log n) <br>
+CopyOnWriteArraySet=============O(n)================O(n)==================O(n) <br>
 Map реализации <br>
 Коллекция	           Получение (get)  Вставка (put)	  	   Удаление (remove)	  Поиск (containsKey) <br>
 HashMap	               O(1)	            O(1)	              O(1)                   O(1) <br>
