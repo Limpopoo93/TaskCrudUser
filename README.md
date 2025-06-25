@@ -81,17 +81,17 @@ LinkedHashSet===================O(1)================O(1)==================O(1) <
 TreeSet=========================O(log n)============O(log n)==============O(log n) <br>
 CopyOnWriteArraySet=============O(n)================O(n)==================O(n) <br>
 Map реализации <br>
-Коллекция	           Получение (get)  Вставка (put)	  	   Удаление (remove)	  Поиск (containsKey) <br>
-HashMap	               O(1)	            O(1)	              O(1)                   O(1) <br>
-LinkedHashMap	         O(1)	            O(1)	              O(1)                   O(1) <br>
-TreeMap	               O(log n)	        O(log n)	          O(log n)	             O(log n) <br>
-ConcurrentHashMap	     O(1)	            O(1)	              O(1)                   O(1) <br>
-Hashtable	             O(1)	            O(1)	              O(1)                   O(1) <br>
+Коллекция==============Получение (get)==Вставка (put)=======Удаление (remove)===Поиск (containsKey) <br>
+HashMap=================O(1)==============O(1)================O(1)==================O(1) <br>
+LinkedHashMap===========O(1)==============O(1)================O(1)==================O(1) <br>
+TreeMap=================O(log n)==========O(log n)============O(log n)==============O(log n) <br>
+ConcurrentHashMap=======O(1)==============O(1)================O(1)==================O(1) <br>
+Hashtable===============O(1)==============O(1)================O(1)==================O(1) <br>
 Queue/Deque реализации <br>
-Коллекция	                             Добавление (offer)	 Удаление (poll)	    Просмотр (peek) <br>
-ArrayDeque	                            O(1)	              O(1)	                 O(1) <br>
-PriorityQueue	                          O(log n)	          O(log n)	             O(1) <br>
-ConcurrentLinkedQueue	                  O(1)	              O(1)	                 O(1) <br>
+Коллекция======================Добавление (offer)===Удаление (poll)======Просмотр (peek) <br>
+ArrayDeque=========================O(1)================O(1)==================O(1) <br>
+PriorityQueue======================O(log n)============O(log n)==============O(1) <br>
+ConcurrentLinkedQueue==============O(1)================O(1)==================O(1) <br>
 
 ## Коллекции_виды
 
