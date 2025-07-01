@@ -663,10 +663,10 @@ CAP-теорема - это теорема, которая утверждает,
    родительский класс может этого не знать и у него будет не объяснимое поведение. <br>
    К примеру у нас есть класс прямоугольник и у него есть два поля ширина и высота. Мы создаем класс Квадрат который наследуется
    от треугольника и он оверайдит метод <br>
-   `  @Override
-    public void setHeight(int height) {
-        this.height = height;
-        this.width = height; // Нарушение! Меняет width
+   `  @Override <br>
+    public void setHeight(int height) { <br>
+        this.height = height; <br>
+        this.width = height; // Нарушение! Меняет width <br>
     }` <br>
    в итоге происходит нарушение т.к. квадрат не может быть подтипом треугольника и меняется оба поля. Как вариант пересмотреть иерархию наследования.
 4. **Принцип разделения интерфейса (Interface Segregation Principle, ISP)** <br> - клиенты не должны зависеть от интерфейсов, которые
@@ -677,14 +677,14 @@ CAP-теорема - это теорема, которая утверждает,
    реализации базы данных. <br>
    Этот принцип уменьшает связанность, позволяет легко меняь реализации(PostgreSQL, MySQL) <br>
    Проблемный код: <br>
-   `class OrderService {
-     private MySQLDatabase database;  // Прямая зависимость от конкретного класса!
-     public OrderService() {
-       this.database = new MySQLDatabase();  // Жесткая привязка
-     }
-     public void saveOrder(Order order) {
-       database.save(order);
-     }
+   `class OrderService { <br>
+     private MySQLDatabase database;  // Прямая зависимость от конкретного класса! <br>
+     public OrderService() { <br>
+       this.database = new MySQLDatabase();  // Жесткая привязка <br>
+     } <br>
+     public void saveOrder(Order order) { <br>
+       database.save(order); <br>
+     } <br>
    }` <br>
    Проблемы: <br>
   - OrderService жестко зависит от MySQLDatabase.
@@ -701,25 +701,25 @@ CAP-теорема - это теорема, которая утверждает,
 
 Порождающие:
 1. **Абстрактная фабрика** - представляет собой интерфейс для создания других классов, позволяя создавать семейства связанных объектов не привязываясь к конкретным классам.
-   `public interface CarsFactory { }
-    public class ToyotaFactory implements CarsFactory {}
-    public class FordFactory implements CarsFactory {}
-
-   public interface CarsFactory {
-     Sedan createSedan();
-     Coupe createCoupe();
-   }
-
-   public class ToyotaFactory implements CarsFactory {
-     @Override
-     public Sedan createSedan() {
-       return new  ToyotaSedan();
-     }
-     @Override
-     public Coupe createCoupe() {
-       return new ToyotaCoupe();
-     }
-   }`
+   `public interface CarsFactory { } <br>
+    public class ToyotaFactory implements CarsFactory {} <br>
+    public class FordFactory implements CarsFactory {} <br>
+<br>
+   public interface CarsFactory { <br>
+     Sedan createSedan(); <br>
+     Coupe createCoupe(); <br>
+   } <br>
+<br>
+   public class ToyotaFactory implements CarsFactory { <br>
+     @Override <br>
+     public Sedan createSedan() { <br>
+       return new  ToyotaSedan(); <br>
+     } <br>
+     @Override <br>
+     public Coupe createCoupe() { <br>
+       return new ToyotaCoupe(); <br>
+     } <br> 
+   }` <br>
 2. **Строитель (Builder)** - представляет собой интерфейс для создания сложного объекта. Тоесть позволяет шаг за шагом строить сложные объекты.
    Он позволяет строить нам объекты избегая громозких конструкторов, устанавливая поля пошагово через цепочку методов.
 3. **Фабричный метод (Factory method)** - Определяет интерфейс для создания объекта, но оставляет подклассам решение о том, какой
@@ -730,55 +730,55 @@ CAP-теорема - это теорема, которая утверждает,
 
 Структурные:
 1. **Адаптер** - Позволяет несовместимым интерфейсам работать вместе. <br>
-   `interface Car(){}
-    interface Locomotive(){}
-    class ElectroCar implemets Car(){}
-    class ElectricLocomotive implements Locomotive() {}
-    class CarToLocomotive implemets Locomotive {
-       private Car car;
-    }
+   `interface Car(){} <br>
+    interface Locomotive(){} <br>
+    class ElectroCar implemets Car(){} <br>
+    class ElectricLocomotive implements Locomotive() {} <br>
+    class CarToLocomotive implemets Locomotive { <br>
+       private Car car; <br>
+    } <br>
    `
 2. **Мост (Bridge)** - позволяет разделять абстракцию и реализацию позволяя им изменяться независимо. <br> Он применяется допустим когда нужно разделить монолитный класс на части, которые могут изменяться независимо.
 3. **Компоновщик (Composite)** - Объединяет объекты в древовидные структуры и позволяет работать как с одним объектом. <br> Используется к примеру для реализации файловой системы (иерархии папок). <br>
    `
-    interface Container {
-      void add(Box box);
-      void delete(int number)
-    }
-    interface Box {
-      int getNumber();
-    }
-    class BigContainer implements Container {
-      private List<Box> boxes;
-      public void add(Box box) {}
-      public void delete(int number) {}
-      public List<Box> getBoxes(){}
-    }
-    `
+    interface Container { <br>
+      void add(Box box); <br>
+      void delete(int number) <br>
+    } <br>
+    interface Box { <br>
+      int getNumber(); <br>
+    } <br>
+    class BigContainer implements Container { <br>
+      private List<Box> boxes; <br>
+      public void add(Box box) {} <br>
+      public void delete(int number) {} <br>
+      public List<Box> getBoxes(){} <br>
+    }<br>
+    ` <br>
 4. **Декоратор (Decorator)** - Динамически добавляет новую функциональность объекту, не меняя основной класс. (когда класс реализует интерфейс, имплементит
    его метод и добавляет дополнительные методы)
 5. **Фасад (Facade)** - Предоставляет упрощенный интерфейс к сложной системе. (тоесть это реализован метод в котором находятся множество взаимодействий с дочерними классами их вызов и логика)
    `
-   public class Tree {
-     private Roots root = new Roots();
-     private Branches branches = new Branches();
-     private Trunk trunk = new Trunk();
-
-     public void grow() {
-       roots.growRoots();
-       trunk.growTaller();
-       trunk.growAround();
-       branches.growLimbs(6);
-       branches.growLeaves(500);
-     }
+   public class Tree { <br>
+     private Roots root = new Roots(); <br>
+     private Branches branches = new Branches(); <br>
+     private Trunk trunk = new Trunk(); <br>
+ <br>
+     public void grow() { <br>
+       roots.growRoots(); <br>
+       trunk.growTaller(); <br>
+       trunk.growAround(); <br>
+       branches.growLimbs(6); <br>
+       branches.growLeaves(500); <br>
+     } <br>
    `
 6. **Приспособленец (Flyweight)** - позволяет эффективно поддерживать множество объектов, разделяя их общее состояние. <br> Тоесть в классе есть метод который служит как фабрикой для создания классов. <br>
    К примеру у нас приложение создает множество объектов отчего растет потребление памяти и мы можем спроектировать так что будет внутренее состояние которое неизменно для многе объектов и
    внешнее состояние которые уникальное для каждого объекта создаваемого. <br>
-   `  public void display(int position) {  // position - внешнее состояние
-        System.out.printf("Символ '%c' (шрифт: %s, размер: %d) на позиции %d%n", 
-                         symbol, fontFamily, size, position);
-    }`
+   `  public void display(int position) {  // position - внешнее состояние <br>
+        System.out.printf("Символ '%c' (шрифт: %s, размер: %d) на позиции %d%n",  <br>
+                         symbol, fontFamily, size, position); <br>
+    }` <br>
 7. **Заместитель (Proxy)**
 
 Поведения:
