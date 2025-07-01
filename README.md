@@ -145,19 +145,23 @@ Map: HashMap, LinkedHashMap, SortedMap -> TreeMap, (WeakHashMap - доп)
 - add/remove/contains: O(log n)
 - first/last: O(1)
 - методы: first/last/headSet(E elem) возвр.подмножество элем.строго меньше elem/tailSet(E elem) возвр.подмножество элем.больше или равно elem/subSet(E fromE, toE)возвр.подмножество в диапазоне/comparator
-4. TreeSet: Элементы отсортированы с использованием самобалансирующего красно-черного дерева. Используется для элементов в отсорт. порядке,
-   нужны диапазоны значений(headSet, tailSet), часто требуется first, last элем. Запрет на null значения.
+4. TreeSet: Элементы отсортированы с использованием самобалансирующего красно-черного дерева. Используется для элементов в отсорт. порядке согласно естественном порядку comparable или компоратору,
+   Коллекция используется когда нужны диапазоны значений(headSet, tailSet), часто требуется first, last элем. Запрет на null значения.
 - add/remove/contains O(log n)
 - first/last/size/isEmpty O(1)
 5. IdentityHashSet: сравнение элементов по == а не по equals(). порядок не гарантируется. Производительность как и у hashmap.
 
-1. PriorityQueue: это очередь с приоритетами, которая хранит элементы в отсортированном порядке(по умолчанию — натуральный порядок или компаратор).
-   Использует Comparator или естественный порядок (Comparable). Основана на двоичной мин-куче— это дерево, где каждый родитель меньше своих потомков.
+1. PriorityQueue: это очередь с приоритетами, которая хранит элементы в отсортированном порядке(по умолчанию — натуральный порядок или компаратор)а не в порядке добавления.
+   null элементы запрещены. Использует Comparator или естественный порядок (Comparable). Основана на двоичной мин-куче— это дерево, где каждый родитель меньше своих потомков.
+   PriorityQueue<Integer> pq = new PriorityQueue<>();
+   PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder()) - через Comparator
+   PriorityQueue<String> lengthQueue = new PriorityQueue<>((a, b) -> a.length() - b.length()); - С кастомным Comparator
 - offer/add/poll - O(log n)
-- remove/contains - O(n)
+- remove/contains - O(n) (contains (поиск) - Поиск в куче требует полного обхода, так как нет гарантии порядка элементов (кроме корня))
 - peek/size - O(1)
 - методы: offer(E e)(добавляет элемент), poll(удаляет и возвращает голову), element(возвращает голову или exception), peek(возвращает голову или null)
 2. Deque: Добавление/удаление с обоих концов (головы и хвоста). Разрешены Null элементы.
+   Deque расширяет Queue и добавляет возможность вставки/удаления с обоих концов. Queue — только FIFO.
 - методы: addFirst, offerFirst(добавляет в начало или false), removeFirst, pollFirst(удаляет первый), getFirst(получает первый или exception), peekFirst(получает первый или null)
 - все операции: О(1)
 3. ArrayDeque: реализация Deque на основе массива. Автоматическое расширение, может работать как стек и очередь одновременно. Не поддерживает null.
