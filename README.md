@@ -123,30 +123,6 @@ Generics в Java реализованы через стирание типов (
 **Comparator** — это интерфейс для кастомной сортировки (compare())
 
 ## Коллекции_скорость
-       Скорость работы коллекций
-List реализации
-Коллекция	           Получение (get)	Добавление (add)	  Удаление (remove)	    Поиск (contains)
-ArrayList	             O(1)	           O(1)* / O(n)	        O(n)	                 O(n)
-LinkedList	           O(n)	           O(1)	                O(1)	                 O(n)
-CopyOnWriteArrayList	 O(1)	           O(n)	                O(n)	                 O(n)
-Set реализации
-Коллекция	                            Добавление (add)	  Удаление (remove)	    Поиск (contains)
-HashSet	                                O(1)	              O(1)	                 O(1)
-LinkedHashSet	                          O(1)	              O(1)	                 O(1)
-TreeSet	                                O(log n)	          O(log n)	             O(log n)
-CopyOnWriteArraySet	                    O(n)	              O(n)	                 O(n)
-Map реализации
-Коллекция	           Получение (get)  Вставка (put)	  	   Удаление (remove)	  Поиск (containsKey)
-HashMap	               O(1)	            O(1)	              O(1)                   O(1)
-LinkedHashMap	         O(1)	            O(1)	              O(1)                   O(1)
-TreeMap	               O(log n)	        O(log n)	          O(log n)	             O(log n)
-ConcurrentHashMap	     O(1)	            O(1)	              O(1)                   O(1)
-Hashtable	             O(1)	            O(1)	              O(1)                   O(1)
-Queue/Deque реализации
-Коллекция	                             Добавление (offer)	 Удаление (poll)	    Просмотр (peek)
-ArrayDeque	                            O(1)	              O(1)	                 O(1)
-PriorityQueue	                          O(log n)	          O(log n)	             O(1)
-ConcurrentLinkedQueue	                  O(1)	              O(1)	                 O(1)
 
 ## Коллекции_виды
 
@@ -811,18 +787,6 @@ CAP-теорема - это теорема, которая утверждает,
 3. Алгоритмы обхода графов:
 - поиск в ширину (BFS)
 - поиск в глубина (DFS)
-
-|Столбец 1|Столбец 2|Столбец 3|
-|:-|:-:|-:|
-|Равнение по левому краю|Равнение по центру|Равнение по правому краю|
-|Запись|Запись|Запись|
-
-|Алгоритм|	 |Лучший случай|	|Средний случай|	|Худший случай|	|Память|
-|-|--------|---|---|---|
-|Вставками|	 |O(n)|	          |O(n²)|	          |O(n²)|	        |O(1)|
-|Выбором|	   |O(n²)|	        |O(n²)|	          |O(n²)|	        |O(1)|
-|Пузырьком|	 |O(n)|	          |O(n²)|	          |O(n²)|	        |O(1)|
-|Быстрая|	   |O(n log n)|	    |O(n log n)|	    |O(n²)|	        |O(log n)|
 
                 Алгоритмы сортировки
 1. **Быстрая сортировка**: использует стратегию разделяй и властвую.
