@@ -7,15 +7,19 @@
 -[Generics](#Generics) <br>
 -[Что_такое_лямбда](#Что_такое_лямбда) <br>
 -[Виды_функциональных_интерфейсов](#Виды_функциональных_интерфейсов) <br>
+
 -[Коллекции_скорость](#Коллекции_скорость) <br>
+
 -[Разница_Процесса_и_потока](#Разница_Процесса_и_потока) <br>
 -[DeadLock_LiveLock_Starvation](#DeadLock_LiveLock_Starvation) <br>
 -[Что_такое_happens_before_в_Java_Memory_Model](#Что_такое_happens_before_в_Java_Memory_Model) <br>
 -[Разница_между_CountDownLatch_CyclicBarrier_Semaphore](#Разница_между_CountDownLatch_CyclicBarrier_Semaphore) <br>
+
 -[Entity](#Entity) <br>
 -[Транзакции](#Транзакции) <br>
 -[AOP](#AOP) <br>
 -[Параметры_для_аннотаций](#Параметры_для_аннотаций) <br>
+
 -[Docker](#Docker) <br>
 -[CAP](#CAP) <br>
 -[Kubernetes](#Kubernetes) <br>
@@ -24,6 +28,7 @@
 -[Кода_ошибок](#Кода_ошибок) <br>
 -[Сертификат](#Сертификат) <br>
 -[Протоколы](#Протоколы) <br>
+
 -[Микросервисы](#Микросервисы) <br>
 -[Паттерны](#Паттерны) <br>
 -[Алгоритмы](#Алгоритмы) <br>
