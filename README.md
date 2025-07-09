@@ -945,6 +945,7 @@ CAP-теорема - это теорема, которая утверждает,
 8. **Декартово дерерво (опционально)**
 9. **Дерево отрезков (опционально)**
 
+**Откр\закр скобка**
 ```public class ValidParentheses {
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
@@ -971,4 +972,92 @@ CAP-теорема - это теорема, которая утверждает,
         return (opening == '(' && closing == ')') ||
                (opening == '{' && closing == '}') ||
                (opening == '[' && closing == ']');
+    }```
+
+ **Поиск минимальной глубины**
+```public class MinimumDepthOfBinaryTree {
+    // Решение с использованием BFS (рекомендуется)
+    public int minDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int depth = 1;
+        
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode node = queue.poll();
+                
+                // Если это лист, возвращаем текущую глубину
+                if (node.left == null && node.right == null) {
+                    return depth;
+                }
+                
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+            depth++;
+        }
+        return depth;
+    }```
+
+ **Поиск максимальной глубины**
+```public class MaximumDepthOfBinaryTree {
+    // Итеративное решение (BFS)
+    public int maxDepthBFS(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int depth = 0;
+        
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            depth++;
+            
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode node = queue.poll();
+                
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+        }
+        
+        return depth;
+    }
+}```
+
+**Поиск первого одиночного символа в строке**
+```    public int firstUniqChar(String s) {
+        // Используем LinkedHashMap для сохранения порядка вставки
+        Map<Character, Integer> charCount = new LinkedHashMap<>();
+        
+        // Сначала заполняем карту с количеством вхождений каждого символа
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+        
+        // Затем ищем первый символ с количеством 1
+        for (int i = 0; i < s.length(); i++) {
+            if (charCount.get(s.charAt(i)) == 1) {
+                return i;
+            }
+        }
+        
+        return -1; // Если такого символа нет
     }```
