@@ -1067,3 +1067,69 @@ CAP-теорема - это теорема, которая утверждает,
         
         return -1; // Если такого символа нет
     }```
+
+**BFS дерево Учитывая root двоичного дерева, значение целевого узла target и целое число k**
+```
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+        // 1. Строим карту родительских связей
+        Map<TreeNode, TreeNode> parentMap = new HashMap<>();
+        buildParentMap(root, null, parentMap);
+        
+        // 2. Используем BFS для поиска узлов на расстоянии k
+        Queue<TreeNode> queue = new LinkedList<>();
+        Set<TreeNode> visited = new HashSet<>();
+        List<Integer> result = new ArrayList<>();
+        
+        queue.offer(target);
+        visited.add(target);
+        int distance = 0;
+        
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            
+            if (distance == k) {
+                for (TreeNode node : queue) {
+                    result.add(node.val);
+                }
+                return result;
+            }
+            
+            for (int i = 0; i < size; i++) {
+                TreeNode current = queue.poll();
+                
+                // Проверяем левого потомка
+                if (current.left != null && !visited.contains(current.left)) {
+                    queue.offer(current.left);
+                    visited.add(current.left);
+                }
+                
+                // Проверяем правого потомка
+                if (current.right != null && !visited.contains(current.right)) {
+                    queue.offer(current.right);
+                    visited.add(current.right);
+                }
+                
+                // Проверяем родителя
+                TreeNode parent = parentMap.get(current);
+                if (parent != null && !visited.contains(parent)) {
+                    queue.offer(parent);
+                    visited.add(parent);
+                }
+            }
+            
+            distance++;
+        }
+        
+        return result;
+    }
+    
+    // Рекурсивно строим карту родительских связей
+    private void buildParentMap(TreeNode node, TreeNode parent, Map<TreeNode, TreeNode> parentMap) {
+        if (node == null) return;
+        
+        parentMap.put(node, parent);
+        buildParentMap(node.left, node, parentMap);
+        buildParentMap(node.right, node, parentMap);
+    }
+}
+```
