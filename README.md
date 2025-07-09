@@ -1018,6 +1018,7 @@ CAP-теорема - это теорема, которая утверждает,
         }
         
         Queue<TreeNode> queue = new LinkedList<>();
+       //.offer() - Добавляет элемент в конец очереди
         queue.offer(root);
         int depth = 0;
         
@@ -1026,6 +1027,7 @@ CAP-теорема - это теорема, которая утверждает,
             depth++;
             
             for (int i = 0; i < levelSize; i++) {
+                //.poll() - Извлекает и удаляет элемент из начала очереди (голову очереди)
                 TreeNode node = queue.poll();
                 
                 if (node.left != null) {
