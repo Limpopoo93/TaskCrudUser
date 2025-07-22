@@ -35,7 +35,80 @@
 -[Микросервисы](#Микросервисы) <br>
 -[Паттерны](#Паттерны) <br>
 -[Алгоритмы](#Алгоритмы) <br>
+                Map<Long, List<Integer>> -> Map<Integer,Long>
 
+Map<Long, Integer> reversedMap = multi.entrySet().stream()
+.flatMap(entry -> entry.getValue().stream()
+.map(value -> new AbstractMap.SimpleEntry<>(value, entry.getKey())))
+.collect(Collectors.toMap(
+Map.Entry::getKey,
+Map.Entry::getValue,
+(existing, replacement) -> existing));
+
+                      String[] =-> Hashmap
+
+Map<String, String> map = Arrays.stream(array)
+.map(s -> s.split("="))
+.collect(Collectors.toMap(
+arr -> arr[0],  // ключ
+arr -> arr[1],  // значение
+(oldValue, newValue) -> oldValue // обработка дубликатов
+));
+
+  public static class LRUCache extends LinkedHashMap<Integer, Integer> {
+
+        private final int capacity;
+
+        public LRUCache(int capacity) {
+            super(capacity, 0.75f, true);
+            this.capacity = capacity;
+        }
+
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+            return size() > capacity;
+        }
+   }
+
+
+public class MultiIter<T> implements Iterator<T> {
+
+    private final Iterator<T> a;
+    private final Iterator<T> b;
+    private int iteratorIndex = 0;
+
+    public MultiIter(Iterator<T> a, Iterator<T> b) {
+        this.a = a;
+        this.b = b;
+    }
+
+
+    @Override
+    public boolean hasNext() {
+        return a.hasNext() || b.hasNext();
+    }
+
+    @Override
+    public T next() {
+        if (a.hasNext()) {
+            iteratorIndex = 1;
+            return a.next();
+        }
+        iteratorIndex = 2;
+        return b.next();
+
+    }
+
+    @Override
+    public void remove() {
+        if (iteratorIndex == 0) {
+            throw new NoSuchElementException();
+        }
+        if (iteratorIndex == 1) {
+            a.remove();
+        }
+        b.remove();
+    }
 ## 3_принципа_ООП
 
 1. **Инкапсуляция** - скрывает детали реализации объекта внутри, предоставляя только необходимы методы для использования.<br>
