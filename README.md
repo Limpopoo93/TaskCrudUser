@@ -35,7 +35,60 @@
 -[Микросервисы](#Микросервисы) <br>
 -[Паттерны](#Паттерны) <br>
 -[Алгоритмы](#Алгоритмы) <br>
+   public static List<Integer> preorderTraversal(TreeNode root) {
+   List<Integer> result = new ArrayList<>();
+   if (root == null) return result;
 
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            result.add(node.val);
+
+            // Сначала правый, потом левый (чтобы левый обрабатывался первым)
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+
+        return result;
+   }
+   public List<Integer> levelOrderTraversal(TreeNode root) {
+   List<Integer> result = new ArrayList<>();
+   if (root == null) return result;
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            result.add(node.val);
+
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+        }
+
+        return result;
+   }
+
+
+    // DFS
+        // Рекурсия
+    public void dfsRecursive(TreeNode root) {
+        if (root == null) return;
+
+        System.out.print(root.val + " "); // Посещаем узел (Preorder)
+        dfsRecursive(root.left);
+        dfsRecursive(root.right);
+    }
 ## 3_принципа_ООП
 
 1. **Инкапсуляция** - скрывает детали реализации объекта внутри, предоставляя только необходимы методы для использования.<br>
